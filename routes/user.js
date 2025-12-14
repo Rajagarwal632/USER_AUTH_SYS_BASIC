@@ -53,7 +53,7 @@ userrouter.post("/signin" , async function(req,res){
     const email = req.body.email
     const password = req.body.password
 
-    const existuser = usermodel.findOne({
+    const existuser = await usermodel.findOne({
         email
     })
     if(!existuser){
@@ -62,7 +62,7 @@ userrouter.post("/signin" , async function(req,res){
         })
         return
     }
-    const pass_match = bcrypt.compare(password,existuser.password)
+    const pass_match = await bcrypt.compare(password,existuser.password)
     if(pass_match){
         const token = jwt.sign({
             id : existuser._id.toString()
