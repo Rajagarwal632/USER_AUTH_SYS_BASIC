@@ -1,4 +1,4 @@
-const mongoose = require("mongoogse");
+const mongoose = require("mongoose");
 
 mongoose.connect(process.env.MONGOOSE_URL)
 const Schema = mongoose.Schema;
@@ -8,7 +8,7 @@ const user = new Schema({
     email : {type : String , unique : true },
     password : String,
     name : String,
-    created_date : Number
+    // created_date : Number
 })
 
 const usermodel = mongoose.model("user" , user)
